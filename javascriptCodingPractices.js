@@ -2696,5 +2696,2196 @@ let todoList = [
   }
 
   
+  **cp-7-Grocery-list 
+  html:
+
+  <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="groceryListContainer"></div>
+  </body>
+</html>
+
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.grocery-list-container {
+  background-color: #03254c;
+  height: 100vh;
+  padding: 30px;
+}
+
+.grocery-list-heading {
+  text-align: center;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.list-items-container {
+  background-color: #f5f9fd;
+  border-radius: 6px;
+  padding: 30px;
+}
+
+
+js:
+
+let groceryList = [ "Apples", "Boost Drink", "Butterscotch Ice Cream", "Tomato Ketchup", "Dairy Milk Chocolates", "Pasta"];
+
+let groceryListContainerEl = document.getElementById("groceryListContainer");
+
+groceryListContainerEl.classList.add("grocery-list-container");
+
+let headingEl = document.createElement("h1");
+headingEl.classList.add("grocery-list-heading");
+headingEl.textContent = "Grocery List";
+groceryListContainerEl.appendChild(headingEl);
+
+let listItemsContainerEl = document.createElement("ul");
+listItemsContainerEl.classList.add("list-items-container");
+groceryListContainerEl.appendChild(listItemsContainerEl);
+
+for (let groceryItem of groceryList) {
+  let listItemEl = document.createElement("li");
+  listItemEl.textContent = groceryItem;
+  listItemsContainerEl.appendChild(listItemEl);
+}
+
+**cp-7-Checkbox with Label  
+
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="checkboxWithLabelContainer"></div>
+  </body>
+</html>
+
+
+js:
+
+let checkboxWithLabelContainerEl = document.getElementById("checkboxWithLabelContainer");
+
+checkboxWithLabelContainerEl.classList.add("text-center", "p-5");
+
+let checkBoxEl = document.createElement("input");
+checkBoxEl.type = "checkbox";
+checkBoxEl.id = "checkbox";
+checkboxWithLabelContainerEl.appendChild(checkBoxEl);
+
+let labelEl = document.createElement("label");
+labelEl.setAttribute("for", "checkbox");
+labelEl.textContent = "Click Me!";
+labelEl.classList.add("ml-2");
+labelEl.id = "checkboxLabel";
+checkboxWithLabelContainerEl.appendChild(labelEl);
+
+**cp-7-add to cat page  
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-4">
+      <div class="row">
+        <h1 class="col-12 heading">Add To Cart</h1>
+        <div class="col-12 d-flex flex-row justify-content-center mt-4 mb-4">
+          <input type="text" class="w-50" id="cartItemTextInput" />
+          <button class="btn btn-primary ml-3" id="addBtn" onclick="onAddCartItem()">Add</button>
+        </div>
+        <h1 class="col-12 heading cart-items-heading">My Cart items</h1>
+        <ul class="col-12 d-flex flex-column mt-4 cart-items-container" id="cartItemsContainer"></ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+css:
+
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.heading {
+  font-family: "Roboto";
+  text-align: center;
+}
+
+.cart-items-heading {
+  font-size: 20px;
+}
+
+.cart-items-container {
+  text-align: center;
+  list-style-type: none;
+}
+
+js:
+
+let cartItemTextInputEl = document.getElementById("cartItemTextInput");
+let cartItemsContainerEl = document.getElementById("cartItemsContainer");
+
+function onAddCartItem() {
+
+  let cartItemText = cartItemTextInputEl.value;
+
+  let cartItemEl = document.createElement("li");
+  cartItemEl.textContent = cartItemText;
+
+  cartItemTextInputEl.value = "";
+  cartItemsContainerEl.appendChild(cartItemEl);
+
+}
+
+**cp-8-Toggle the Strike Through 
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-5" id="checkBoxWithLabelContainer"></div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.checkbox-label {
+  font-family: "Roboto";
+  margin-left: 5px;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+js:
+let checkBoxWithLabelContainerEl = document.getElementById("checkBoxWithLabelContainer");
+let checkboxId = "checkbox";
+let labelId = "checkboxLabel";
+
+function onCheckboxStatusChange() {
+  checkboxLabelEl.classList.toggle("strike-through");
+}
+
+let checkboxInputEl = document.createElement("input");
+checkboxInputEl.type = "checkbox";
+checkboxInputEl.id = checkboxId;
+
+checkboxInputEl.onclick = function() {
+  onCheckboxStatusChange();
+};
+checkBoxWithLabelContainer.appendChild(checkboxInputEl);
+
+let checkboxLabelEl = document.createElement("label");
+checkboxLabelEl.classList.add("checkbox-label");
+checkboxLabelEl.setAttribute("for", checkboxId);
+checkboxLabelEl.id = labelId;
+checkboxLabelEl.textContent = "I am a label";
+checkBoxWithLabelContainer.appendChild(checkboxLabelEl);
+
+**cp-8-Mark your Skills 
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+ </head>
+ <body>
+    <div class="p-5" id="skillsContainer">
+      <h1 class="heading">Mark your Skills</h1>
+      <ul class="skill-list-container" id="skillListContainer"></ul>
+    </div>
+  </body>
+</html>
+
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.selected {
+  color: green;
+}
+
+.skill-list-container {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+js:
+
+let skillList = [
+    {
+      skillName: "HTML",
+      uniqueNo: 1,
+    },
+    {
+      skillName: "CSS",
+      uniqueNo: 2,
+    },
+    {
+      skillName: "JavaScript",
+      uniqueNo: 3,
+    }
+  ];
   
+  let skillListContainerEl = document.getElementById("skillListContainer");
+  
+  function onMarkSkill(labelId) {
+    let labelEl = document.getElementById(labelId);
+    labelEl.classList.toggle("selected");
+  }
+  
+  function createAndAppendSkill(skill) {
+    let checkboxId = "checkbox" + skill.uniqueNo;
+    let labelId = "label" + skill.uniqueNo;
+  
+    let skillEl = document.createElement("li");
+    skillEl.classList.add("p-1");
+    skillListContainerEl.appendChild(skillEl);
+  
+    let checkBoxEl = document.createElement("input");
+    checkBoxEl.type = "checkbox";
+    checkBoxEl.id = checkboxId;
+  
+    checkBoxEl.onclick = function() {
+      onMarkSkill(labelId);
+    };
+    skillEl.appendChild(checkBoxEl);
+  
+    let labelEl = document.createElement("label");
+    labelEl.setAttribute("for", checkboxId);
+    labelEl.classList.add("checkbox-label");
+    labelEl.id = labelId;
+    labelEl.textContent = skill.skillName;
+    skillEl.appendChild(labelEl);
+  }
+  
+  for (let skill of skillList) {
+    createAndAppendSkill(skill);
+  }
+  
+**cp-8-Your Ordered Items 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-5" id="orderedItemsContainer">
+      <h1 class="heading">Your Ordered Items</h1>
+      <ul class="item-list-container" id="itemListContainer"></ul>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.item-list-container {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.ordered-item {
+  font-family: "Roboto";
+  font-size: 14px;
+  padding: 10px;
+}
+
+js:
+let itemList = [
+    {
+      itemName: "Veg Biryani",
+      uniqueNo: 1,
+    },
+    {
+      itemName: "Chicken 65",
+      uniqueNo: 2,
+    },
+    {
+      itemName: "Paratha",
+      uniqueNo: 3,
+    }
+  ];
+  let itemListContainerEl = document.getElementById("itemListContainer");
+  
+  function onDeleteItem(itemId) {
+    let itemEl = document.getElementById(itemId);
+    itemListContainerEl.removeChild(itemEl);
+  }
+  
+  function createAndAppendItem(item) {
+    let itemId = "item" + item.uniqueNo;
+    let buttonId = "button" + item.uniqueNo;
+  
+    let itemEl = document.createElement("li");
+    itemEl.id = itemId;
+    itemEl.classList.add("ordered-item");
+    itemEl.textContent = item.itemName;
+    itemListContainerEl.appendChild(itemEl);
+  
+    let buttonEl = document.createElement("button");
+    buttonEl.classList.add("btn", "btn-danger", "ml-3");
+    buttonEl.textContent = "Cancel";
+    buttonEl.id = buttonId;
+  
+    buttonEl.onclick = function() {
+      onDeleteItem(itemId);
+    };
+    itemEl.appendChild(buttonEl);
+  }
+  
+  for (let item of itemList) {
+    createAndAppendItem(item);
+  }
+
+  **cp-8-Todos Application 
+
+  html:
+  <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="todos-bg-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="todos-heading">Todos</h1>
+            <h1 class="create-task-heading">
+              Create <span class="create-task-heading-subpart">Task</span>
+            </h1>
+            <input type="text" id="todoUserInput" class="todo-user-input" placeholder="What needs to be done?"/>
+            <button class="add-todo-button" id="addTodoButton">Add</button>
+            <h1 class="todo-items-heading">
+              My <span class="todo-items-heading-subpart">Tasks</span>
+            </h1>
+            <ul class="todo-items-container" id="todoItemsContainer"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.todos-bg-container {
+  background-color: #f9fbfe;
+  height: 100vh;
+}
+
+.todos-heading {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-task-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.add-todo-button {
+  color: white;
+  background-color: #4c63b6;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #096f92;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 4px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+
+js:
+
+/* Follow the instructions found in the description to complete the JavaScript functionality.*/
+
+let todoItemsContainer = document.getElementById("todoItemsContainer");
+let addTodoButton = document.getElementById("addTodoButton");
+
+let todoList = [
+  {
+    text: "Learn HTML",
+    uniqueNo: 1
+  },
+  {
+    text: "Learn CSS",
+    uniqueNo: 2
+  },
+  {
+    text: "Learn JavaScript",
+    uniqueNo: 3
+  }
+];
+
+let todosCount = todoList.length;
+
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkboxElement = document.getElementById(checkboxId);
+  let labelElement = document.getElementById(labelId);
+
+  labelElement.classList.toggle('checked');
+}
+
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+
+  todoItemsContainer.removeChild(todoElement);
+}
+
+function createAndAppendTodo(todo) {
+  let todoId = 'todo' + todo.uniqueNo;
+  let checkboxId = 'checkbox' + todo.uniqueNo;
+  let labelId = 'label' + todo.uniqueNo;
+
+  let todoElement = document.createElement("li");
+  todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
+  todoElement.id = todoId;
+  todoItemsContainer.appendChild(todoElement);
+
+  let inputElement = document.createElement("input");
+  inputElement.type = "checkbox";
+  inputElement.id = checkboxId;
+
+  inputElement.onclick = function() {
+    onTodoStatusChange(checkboxId, labelId);
+  };
+
+  inputElement.classList.add("checkbox-input");
+  todoElement.appendChild(inputElement);
+
+  let labelContainer = document.createElement("div");
+  labelContainer.classList.add("label-container", "d-flex", "flex-row");
+  todoElement.appendChild(labelContainer);
+
+  let labelElement = document.createElement("label");
+  labelElement.setAttribute("for", checkboxId);
+  labelElement.id = labelId;
+  labelElement.classList.add("checkbox-label");
+  labelElement.textContent = todo.text;
+  labelContainer.appendChild(labelElement);
+
+  let deleteIconContainer = document.createElement("div");
+  deleteIconContainer.classList.add("delete-icon-container");
+  labelContainer.appendChild(deleteIconContainer);
+
+  let deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
+
+  deleteIcon.onclick = function() {
+    onDeleteTodo(todoId);
+  };
+
+  deleteIconContainer.appendChild(deleteIcon);
+}
+
+for (let todo of todoList) {
+  createAndAppendTodo(todo);
+}
+
+function onAddTodo() {
+  let userInputElement = document.getElementById("todoUserInput");
+  let userInputValue = userInputElement.value;
+
+  if (userInputValue === "") {
+    alert("Enter Valid Text");
+    return;
+  }
+
+  todosCount = todosCount + 1;
+
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount
+  };
+
+  createAndAppendTodo(newTodo);
+  userInputElement.value = "";
+}
+
+addTodoButton.onclick = function() {
+  onAddTodo();
+};
+
+
+**cp-9-movie reviews 
+
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-4" id="movieReviewsContainer">
+      <div class="row">
+        <h1 class="col-12 text-center reviews-heading">Movie Reviews</h1>
+        <div class="col-12 mb-4">
+          <label for="titleInput" class="input-label">MOVIE TITLE</label>
+          <input type="text" class="w-100 title-input" id="titleInput" placeholder="Enter a movie title"/>
+          <label for="reviewTextarea" class="input-label">YOUR REVIEW</label>
+          <textarea class="w-100 p-2 review-textarea" id="reviewTextarea" rows="5" placeholder="Enter your review"></textarea>
+          <div class="d-flex flex-row justify-content-end mt-3">
+            <button class="btn btn-primary" id="addBtn" onclick="onAddReview()">Add</button>
+          </div>
+        </div>
+        <div class="col-12 mt-4" id="reviewsContainer"></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.reviews-heading {
+  color: #2d3a35;
+  font-family: "Roboto";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.input-label {
+  color: #7b8794;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.title-input {
+  font-family: "Roboto";
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cbd2d9;
+  border-radius: 4px;
+  padding-left: 12px;
+}
+
+.review-textarea {
+  color: #2d3a35;
+  font-family: "Roboto";
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cbd2d9;
+  border-radius: 4px;
+}
+
+.movie-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+
+js:
+
+let reviewsContainerEl = document.getElementById("reviewsContainer");
+let titleInputEl = document.getElementById("titleInput");
+let reviewTextareaEl = document.getElementById("reviewTextarea");
+
+function onAddReview() {
+  let movieTitle = titleInputEl.value;
+  let movieReview = reviewTextareaEl.value;
+
+  // Showing an alert message when movieTitle is empty
+  if (movieTitle === "") {
+    alert("Please enter a movie title");
+    return;
+  }
+
+  // Creating and appending movieTitleEl to the reviewsContainer
+  let movieTitleEl = document.createElement("h1");
+  movieTitleEl.textContent = "Movie Title: " + movieTitle;
+  movieTitleEl.classList.add("movie-title");
+  reviewsContainerEl.appendChild(movieTitleEl);
+
+  // Creating and appending the movieReviewEl to the reviewsContainer
+  let movieReviewEl = document.createElement("p");
+  movieReviewEl.textContent = "Review: " + movieReview;
+  reviewsContainerEl.appendChild(movieReviewEl);
+
+  // Creating and appending the horizontalLine to the reviewsContainer after adding movieTitleEl and movieReviewEl
+  let horizontalLineEl = document.createElement("hr");
+  reviewsContainerEl.appendChild(horizontalLineEl);
+
+  // Clearing the values of titleInputEl and reviewTextareaEl
+  titleInputEl.value = "";
+  reviewTextareaEl.value = "";
+}
+
+
+**cp-9-Click Counter 
+html:<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="bg-container d-flex flex-column justify-content-center" id="clickCounterContainer">
+      <h1 class="counter-heading">The Button has been clicked
+      <br/> <span id="counterValue" class="counter-value">0</span> times</h1>
+      <div class="mt-2 text-center">
+        <p class="description">Click the button to increase the count!</p>
+        <button class="button btn btn-primary" id="incrementBtn" onclick="onIncrementCount()">Click Me!</button>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-color: #f1f5f8;
+  height: 100vh;
+}
+
+.counter-heading {
+  text-align: center;
+  color: #2d3a35;
+  font-family: "Roboto";
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.counter-value {
+  color: #c20a72;
+  font-weight: 900;
+}
+
+.description {
+  color: #2d3a35;
+  font-family: "Roboto";
+}
+
+.button {
+  font-family: "Roboto";
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+js:
+let counterValueEl = document.getElementById("counterValue");
+
+// Getting the value of the clickCount from the localStorage
+let clickCount = localStorage.getItem("clickCount");
+
+// Checking if the clickCount value exists in the localStorage or not
+if (clickCount === null) {
+  // Assigning 0 to the textContent of the counterValueEl if it doesn't exist
+  counterValueEl.textContent = 0;
+} else {
+  // Assigning the clickCount value to the textContent of the counterValueEl if it exists
+  counterValueEl.textContent = clickCount;
+}
+
+function onIncrementCount() {
+  let previousCounterValue = counterValueEl.textContent;
+  let updatedCounterValue = parseInt(previousCounterValue) + 1;
+
+  // Updating the clickCount value in the localStorage
+  localStorage.setItem("clickCount", updatedCounterValue);
+  // Updating the counterValueEl textContent
+  counterValueEl.textContent = updatedCounterValue;
+}
+
+
+***cp-10-JSON Stringify Practice 
+html:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="json-container" id="jsonContainer">
+      <h1 class="heading">JSON Stringified Values</h1>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.json-container {
+  padding: 30px;
+}
+
+.heading {
+  font-family: "Roboto";
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.value-container {
+  background-color: #f3f3f3;
+  border-radius: 12px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.value {
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+js:
+
+let bikes = ["Hero", "Honda", "Bajaj", "Suzuki", "Yamaha"];
+let person = {
+  name: "Rahul",
+  age: 25,
+  gender: "Male",
+};
+let todos = [
+  {
+    todo: "Attending CCBP sessions",
+    todoStatus: "Completed",
+  },
+  {
+    todo: "Completing practice sets",
+    todoStatus: "Not Completed",
+  },
+  {
+    todo: "Asking doubts",
+    todoStatus: "Completed",
+  },
+];
+let valuesToStringify = [bikes, person, todos];
+
+let jsonContainerEl = document.getElementById("jsonContainer");
+
+function createAndAppendValue(stringifiedValue) {
+  let valueContainerEl = document.createElement("div");
+  valueContainerEl.classList.add("value-container");
+  jsonContainerEl.appendChild(valueContainerEl);
+
+  let valueEl = document.createElement("span");
+  valueEl.textContent = stringifiedValue;
+  valueEl.classList.add("value");
+  valueContainerEl.appendChild(valueEl);
+}
+
+function convertToJSONString(value) {
+  let stringifiedValue = JSON.stringify(value);
+  createAndAppendValue(stringifiedValue);
+}
+
+for (let value of valuesToStringify) {
+  convertToJSONString(value);
+}
+
+**cp-10-Greeting Card
+
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="greeting-card-container">
+      <div class="text-right">
+        <p class="greet" id="greetFrom"></p>
+        <p class="greet" id="greetTo"></p>
+      </div>
+      <div class="greet-text-container d-flex flex-column justify-content-center" id="wishTextContainer">
+        <h1 class="heading">Happy <br/><span class="new-year">New Year</span></h1>
+        <p class="greet-text mt-4" id="greetText"></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.greeting-card-container {
+  background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/greeting-card-1-bg.png");
+  background-size: cover;
+  height: 100vh;
+  padding: 20px;
+}
+
+.greet {
+  color: #1f2933;
+  font-family: "DM Sans";
+  font-weight: bold;
+}
+
+.heading {
+  color: #1f2933;
+  font-family: "Playfair Display";
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.new-year {
+  font-size: 75px;
+}
+
+.greet-text-container {
+  text-align: center;
+  height: 80vh;
+}
+
+.greet-text {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+
+js:
+
+let greeting = '{"greetText":"Wishing that the new year will bring joy, love, peace, and happiness to you.","from":"Rahul","to":"Varakumar"}';
+
+let parsedValue = JSON.parse(greeting);
+
+let greetTextEl = document.getElementById("greetText");
+let greetFromEl = document.getElementById("greetFrom");
+let greetToEl = document.getElementById("greetTo");
+
+greetTextEl.textContent = parsedValue.greetText;
+greetFromEl.textContent = "From: " + parsedValue.from;
+greetToEl.textContent = "To: " + parsedValue.to;
+
+
+**cp-10-todos application 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="todos-bg-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="todos-heading">Todos</h1>
+            <h1 class="create-task-heading">
+              Create <span class="create-task-heading-subpart">Task</span>
+            </h1>
+            <input type="text" id="todoUserInput" class="todo-user-input" placeholder="What needs to be done?"/>
+            <button class="button" id="addTodoButton">Add</button>
+            <h1 class="todo-items-heading">
+              My <span class="todo-items-heading-subpart">Tasks</span>
+            </h1>
+            <ul class="todo-items-container" id="todoItemsContainer"></ul>
+            <button class="button" id="saveTodoButton">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.todos-bg-container {
+  background-color: #f9fbfe;
+  height: 100vh;
+}
+
+.todos-heading {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-task-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.button {
+  color: white;
+  background-color: #4c63b6;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #096f92;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 4px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+js:
+let todoItemsContainer = document.getElementById("todoItemsContainer");
+let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
+
+function getTodoListFromLocalStorage() {
+  let stringifiedTodoList = localStorage.getItem("todoList");
+  let parsedTodoList = JSON.parse(stringifiedTodoList);
+  if (parsedTodoList === null) {
+    return [];
+  } else {
+    return parsedTodoList;
+  }
+}
+
+let todoList = getTodoListFromLocalStorage();
+let todosCount = todoList.length;
+
+saveTodoButton.onclick = function () {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+};
+
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkboxElement = document.getElementById(checkboxId);
+  let labelElement = document.getElementById(labelId);
+  labelElement.classList.toggle("checked");
+}
+
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+  todoItemsContainer.removeChild(todoElement);
+}
+
+function createAndAppendTodo(todo) {
+  let todoId = "todo" + todo.uniqueNo;
+  let checkboxId = "checkbox" + todo.uniqueNo;
+  let labelId = "label" + todo.uniqueNo;
+
+  let todoElement = document.createElement("li");
+  todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
+  todoElement.id = todoId;
+  todoItemsContainer.appendChild(todoElement);
+
+  let inputElement = document.createElement("input");
+  inputElement.type = "checkbox";
+  inputElement.id = checkboxId;
+
+  inputElement.onclick = function() {
+    onTodoStatusChange(checkboxId, labelId);
+  };
+
+  inputElement.classList.add("checkbox-input");
+  todoElement.appendChild(inputElement);
+
+  let labelContainer = document.createElement("div");
+  labelContainer.classList.add("label-container", "d-flex", "flex-row");
+  todoElement.appendChild(labelContainer);
+
+  let labelElement = document.createElement("label");
+  labelElement.setAttribute("for", checkboxId);
+  labelElement.id = labelId;
+  labelElement.classList.add("checkbox-label");
+  labelElement.textContent = todo.text;
+  labelContainer.appendChild(labelElement);
+
+  let deleteIconContainer = document.createElement("div");
+  deleteIconContainer.classList.add("delete-icon-container");
+  labelContainer.appendChild(deleteIconContainer);
+
+  let deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
+
+  deleteIcon.onclick = function () {
+    onDeleteTodo(todoId);
+  };
+
+  deleteIconContainer.appendChild(deleteIcon);
+}
+
+for (let todo of todoList) {
+  createAndAppendTodo(todo);
+}
+
+function onAddTodo() {
+  let userInputElement = document.getElementById("todoUserInput");
+  let userInputValue = userInputElement.value;
+
+  if (userInputValue === "") {
+    alert("Enter Valid Text");
+    return;
+  }
+
+  todosCount = todosCount + 1;
+
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount,
+  };
+  todoList.push(newTodo);
+  createAndAppendTodo(newTodo);
+  userInputElement.value = "";
+}
+
+addTodoButton.onclick = function () {
+  onAddTodo();
+};
+
+**cp-11-Splice Playground
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row">
+        <h1 class="playground-heading col-12 text-center">Splice Playground</h1>
+        <div class="col-4 mt-4 mb-4">
+          <label class="input-label" for="startIndexInput">START INDEX</label>
+          <input type="text" class="user-input" id="startIndexInput" placeholder="1" />
+        </div>
+        <div class="col-4 mt-4 mb-4">
+          <label class="input-label" for="deleteCountInput">DELETE COUNT</label>
+          <input type="text" class="user-input" id="deleteCountInput" placeholder="0" />
+        </div>
+        <div class="col-4 mt-4 mb-4">
+          <label class="input-label" for="itemToAddInput">ITEM TO ADD</label>
+          <input type="text" class="user-input" id="itemToAddInput" placeholder="2" />
+        </div>
+        <div class="col-12 text-center mb-4">
+          <button class="btn btn-primary" id="spliceBtn">Splice</button>
+        </div>
+        <h1 class="col-12 updated-array-heading">Updated Array</h1>
+        <div class="col-12 updated-array-container">
+          <span class="updated-array" id="updatedArray"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.playground-heading {
+  color: #2d3a35;
+  font-family: "Roboto";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.input-label {
+  text-align: center;
+  color: #7b8794;
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-input {
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cbd2d9;
+  border-radius: 4px;
+}
+
+.updated-array-heading {
+  font-family: "Roboto";
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.updated-array-container {
+  background-color: #f3f3f3;
+  padding: 20px;
+}
+
+.updated-array {
+  font-family: "Bree Serif";
+  font-size: 16px;
+}
+
+js:
+
+let arr = [1, 7, 3, 1, 0, 20, 77];
+
+let startIndexInputEl = document.getElementById("startIndexInput");
+let deleteCountInputEl = document.getElementById("deleteCountInput");
+let itemToAddInputEl = document.getElementById("itemToAddInput");
+let updatedArrayEl = document.getElementById("updatedArray");
+let spliceBtnEl = document.getElementById("spliceBtn");
+
+function convertArrtoJSONStringAndAppend() {
+  const stringifiedArr = JSON.stringify(arr);
+  updatedArrayEl.textContent = stringifiedArr;
+}
+
+convertArrtoJSONStringAndAppend();
+
+spliceBtnEl.onclick = function spliceArray() {
+  let startIndex = startIndexInputEl.value;
+  let deleteCount = deleteCountInputEl.value;
+  let itemToAdd = itemToAddInputEl.value;
+
+  if (startIndex === "") {
+    alert("Please enter start Index");
+    return;
+  }
+
+  if (deleteCount === "") {
+    deleteCount = 0;
+  }
+
+  if (itemToAdd === "") {
+    arr.splice(parseInt(startIndex), parseInt(deleteCount));
+  } else {
+    arr.splice(parseInt(startIndex), parseInt(deleteCount), itemToAdd);
+  }
+
+  startIndexInputEl.value = "";
+  deleteCountInputEl.value = "";
+  itemToAddInputEl.value = "";
+  convertArrtoJSONStringAndAppend();
+};
+
+**cp-11-Find the Index of the Numbers 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row">
+        <h1 class="playground-heading col-12 text-center">Find the Index of the Numbers</h1>
+        <div class="col-12 mt-4 mb-4">
+          <p class="default-array text-center">[ 17, 31, 77, 20, 63 ]</p>
+        </div>
+        <div class="col-12 d-flex flex-row justify-content-center mb-5">
+          <input type="text" class="user-input w-50 pl-2" id="userInput" placeholder="Enter a number"/>
+          <button class="btn btn-primary ml-3" id="findBtn" onclick="findIndexOfNumber()">Find</button>
+        </div>
+        <h1 class="index-of-number-heading">Index of number:</h1>
+        <div class="col-12 index-of-number-container text-center">
+          <span class="index-of-number" id="indexOfNumber"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.playground-heading {
+  color: #2d3a35;
+  font-family: "Roboto";
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.default-array {
+  color: #2d3a35;
+  font-family: "Bree Serif";
+  font-size: 24px;
+}
+
+.user-input {
+  height: 40px;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cbd2d9;
+  border-radius: 4px;
+}
+
+.index-of-number-heading {
+  font-family: "Roboto";
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.index-of-number-container {
+  color: #795e26;
+  background-color: #f3f3f3;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+.index-of-number {
+  color: #795e26;
+  font-family: "Bree Serif";
+  font-size: 36px;
+  font-weight: 800;
+}
+
+
+js:
+
+let numbers = [17, 31, 77, 20, 63];
+
+let userInputEl = document.getElementById("userInput");
+let indexOfNumberEl = document.getElementById("indexOfNumber");
+
+function findIndexOfNumber() {
+  let number = parseInt(userInput.value);
+  let itemIndex = numbers.findIndex(function(eachItem) {
+    if (eachItem === number) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  indexOfNumberEl.textContent = itemIndex;
+}
+
+**cp-11-Todos Application 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="todos-bg-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="todos-heading">Todos</h1>
+            <h1 class="create-task-heading">
+              Create <span class="create-task-heading-subpart">Task</span>
+            </h1>
+            <input type="text" id="todoUserInput" class="todo-user-input" placeholder="What needs to be done?"/>
+            <button class="button" id="addTodoButton">Add</button>
+            <h1 class="todo-items-heading">
+              My <span class="todo-items-heading-subpart">Tasks</span>
+            </h1>
+            <ul class="todo-items-container" id="todoItemsContainer"></ul>
+            <button class="button" id="saveTodoButton">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.todos-bg-container {
+  background-color: #f9fbfe;
+  height: 100vh;
+}
+
+.todos-heading {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-task-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.button {
+  color: white;
+  background-color: #4c63b6;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #096f92;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 4px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+js:
+let todoItemsContainer = document.getElementById("todoItemsContainer");
+let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
+
+function getTodoListFromLocalStorage() {
+  let stringifiedTodoList = localStorage.getItem("todoList");
+  let parsedTodoList = JSON.parse(stringifiedTodoList);
+  if (parsedTodoList === null) {
+    return [];
+  } else {
+    return parsedTodoList;
+  }
+}
+
+let todoList = getTodoListFromLocalStorage();
+let todosCount = todoList.length;
+
+saveTodoButton.onclick = function() {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+};
+
+function onAddTodo() {
+  let userInputElement = document.getElementById("todoUserInput");
+  let userInputValue = userInputElement.value;
+
+  if (userInputValue === "") {
+    alert("Enter Valid Text");
+    return;
+  }
+
+  todosCount = todosCount + 1;
+
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount,
+  };
+  todoList.push(newTodo);
+  createAndAppendTodo(newTodo);
+  userInputElement.value = "";
+}
+
+addTodoButton.onclick = function() {
+  onAddTodo();
+};
+
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+  todoItemsContainer.removeChild(todoElement);
+
+  let deleteElementIndex = todoList.findIndex(function(eachTodo) {
+    let eachTodoId = "todo" + eachTodo.uniqueNo;
+    if (eachTodoId === todoId) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  todoList.splice(deleteElementIndex, 1);
+}
+
+function onTodoStatusChange(checkboxId, labelId) {
+  let checkboxElement = document.getElementById(checkboxId);
+  let labelElement = document.getElementById(labelId);
+  labelElement.classList.toggle("checked");
+}
+
+function createAndAppendTodo(todo) {
+  let todoId = "todo" + todo.uniqueNo;
+  let checkboxId = "checkbox" + todo.uniqueNo;
+  let labelId = "label" + todo.uniqueNo;
+
+  let todoElement = document.createElement("li");
+  todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
+  todoElement.id = todoId;
+  todoItemsContainer.appendChild(todoElement);
+
+  let inputElement = document.createElement("input");
+  inputElement.type = "checkbox";
+  inputElement.id = checkboxId;
+
+  inputElement.onclick = function() {
+    onTodoStatusChange(checkboxId, labelId);
+  };
+
+  inputElement.classList.add("checkbox-input");
+  todoElement.appendChild(inputElement);
+
+  let labelContainer = document.createElement("div");
+  labelContainer.classList.add("label-container", "d-flex", "flex-row");
+  todoElement.appendChild(labelContainer);
+
+  let labelElement = document.createElement("label");
+  labelElement.setAttribute("for", checkboxId);
+  labelElement.id = labelId;
+  labelElement.classList.add("checkbox-label");
+  labelElement.textContent = todo.text;
+  labelContainer.appendChild(labelElement);
+
+  let deleteIconContainer = document.createElement("div");
+  deleteIconContainer.classList.add("delete-icon-container");
+  labelContainer.appendChild(deleteIconContainer);
+
+  let deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
+
+  deleteIcon.onclick = function() {
+    onDeleteTodo(todoId);
+  };
+
+  deleteIconContainer.appendChild(deleteIcon);
+}
+
+for (let todo of todoList) {
+  createAndAppendTodo(todo);
+}
+
+**cp-12-remove item from local storage 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-5">
+      <div class="mt-3 mb-3 text-center">
+        <input type="text" id="input" />
+        <button class="btn btn-primary" id="saveBtn">Save</button>
+        <button class="btn btn-primary" id="clearBtn">Clear</button>
+      </div>
+      <h1 class="heading text-center">Click on clear to remove the text in the HTML input element.</h1>
+    </div>
+  </body>
+</html>
+ 
+
+ css:
+
+ @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+js:
+
+let inputEl = document.getElementById("input");
+let saveBtnEl = document.getElementById("saveBtn");
+let clearBtnEl = document.getElementById("clearBtn");
+let storageKey = "userInput";
+
+let storageVal = localStorage.getItem(storageKey);
+
+if (storageVal === null) {
+  localStorage.setItem(storageKey, "Hello");
+}
+
+inputEl.value = localStorage.getItem(storageKey);
+
+saveBtnEl.onclick = function() {
+  let inputVal = inputEl.value;
+  localStorage.setItem(storageKey, inputVal);
+};
+
+clearBtnEl.onclick = function() {
+  inputEl.value = "";
+  localStorage.removeItem(storageKey);
+};
+
+**cp-12-Local Storage Practice 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <textarea rows="8" cols="55" id="msg"></textarea>
+    <br />
+    <button class="btn btn-primary mt-1" id="saveBtn">Save</button>
+    <button class="btn btn-primary mt-1" id="clearBtn">Clear</button>
+  </body>
+</html> 
+
+js:
+
+let msgEl = document.getElementById("msg");
+let saveBtnEl = document.getElementById("saveBtn");
+let clearBtnEl = document.getElementById("clearBtn");
+
+let storageKey = "userInput";
+
+saveBtnEl.onclick = function() {
+  let msgVal = msgEl.value;
+  localStorage.setItem(storageKey, msgVal);
+};
+
+clearBtnEl.onclick = function() {
+  msgEl.value = "";
+  localStorage.removeItem(storageKey);
+};
+
+let storedUserInputVal = localStorage.getItem(storageKey);
+
+if (storedUserInputVal !== null) {
+  msgEl.value = storedUserInputVal;
+}
+else {
+  msgEl.value = "";
+}
+
+**cp-12-Todos Application 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="todos-bg-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="todos-heading">Todos</h1>
+            <h1 class="create-task-heading">
+              Create <span class="create-task-heading-subpart">Task</span>
+            </h1>
+            <input type="text" id="todoUserInput" class="todo-user-input" placeholder="What needs to be done?"/>
+            <button class="button" id="addTodoButton">Add</button>
+            <h1 class="todo-items-heading">
+              My <span class="todo-items-heading-subpart">Tasks</span>
+            </h1>
+            <ul class="todo-items-container" id="todoItemsContainer"></ul>
+            <button class="button" id="saveTodoButton">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.todos-bg-container {
+  background-color: #f9fbfe;
+  height: 100vh;
+}
+
+.todos-heading {
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 46px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.create-task-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.create-task-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-heading {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.todo-items-heading-subpart {
+  font-family: "Roboto";
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.todo-items-container {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-item-container {
+  margin-top: 15px;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #e4e7eb;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.button {
+  color: white;
+  background-color: #4c63b6;
+  font-family: "Roboto";
+  font-size: 18px;
+  border-width: 0;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #096f92;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 4px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.checkbox-label {
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+js:
+let todoItemsContainer = document.getElementById("todoItemsContainer");
+let addTodoButton = document.getElementById("addTodoButton");
+let saveTodoButton = document.getElementById("saveTodoButton");
+
+function getTodoListFromLocalStorage() {
+  let stringifiedTodoList = localStorage.getItem("todoList");
+  let parsedTodoList = JSON.parse(stringifiedTodoList);
+  if (parsedTodoList === null) {
+    return [];
+  } else {
+    return parsedTodoList;
+  }
+}
+
+let todoList = getTodoListFromLocalStorage();
+let todosCount = todoList.length;
+
+saveTodoButton.onclick = function() {
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+};
+
+function onAddTodo() {
+  let userInputElement = document.getElementById("todoUserInput");
+  let userInputValue = userInputElement.value;
+
+  if (userInputValue === "") {
+    alert("Enter Valid Text");
+    return;
+  }
+
+  todosCount = todosCount + 1;
+
+  let newTodo = {
+    text: userInputValue,
+    uniqueNo: todosCount,
+    isChecked: false
+  };
+  todoList.push(newTodo);
+  createAndAppendTodo(newTodo);
+  userInputElement.value = "";
+}
+
+addTodoButton.onclick = function() {
+  onAddTodo();
+};
+
+function onTodoStatusChange(checkboxId, labelId, todoId) {
+  let checkboxElement = document.getElementById(checkboxId);
+  let labelElement = document.getElementById(labelId);
+  labelElement.classList.toggle("checked");
+
+  let todoObjectIndex = todoList.findIndex(function(eachTodo) {
+    let eachTodoId = "todo" + eachTodo.uniqueNo;
+
+    if (eachTodoId === todoId) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  let todoObject = todoList[todoObjectIndex];
+
+  if(todoObject.isChecked === true){
+    todoObject.isChecked = false;
+  } else {
+    todoObject.isChecked = true;
+  }
+
+}
+
+function onDeleteTodo(todoId) {
+  let todoElement = document.getElementById(todoId);
+  todoItemsContainer.removeChild(todoElement);
+
+  let deleteElementIndex = todoList.findIndex(function(eachTodo) {
+    let eachTodoId = "todo" + eachTodo.uniqueNo;
+    if (eachTodoId === todoId) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
+  todoList.splice(deleteElementIndex, 1);
+}
+
+function createAndAppendTodo(todo) {
+  let todoId = "todo" + todo.uniqueNo;
+  let checkboxId = "checkbox" + todo.uniqueNo;
+  let labelId = "label" + todo.uniqueNo;
+
+  let todoElement = document.createElement("li");
+  todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
+  todoElement.id = todoId;
+  todoItemsContainer.appendChild(todoElement);
+
+  let inputElement = document.createElement("input");
+  inputElement.type = "checkbox";
+  inputElement.id = checkboxId;
+  inputElement.checked = todo.isChecked;
+
+  inputElement.onclick = function () {
+    onTodoStatusChange(checkboxId, labelId, todoId);
+  };
+
+  inputElement.classList.add("checkbox-input");
+  todoElement.appendChild(inputElement);
+
+  let labelContainer = document.createElement("div");
+  labelContainer.classList.add("label-container", "d-flex", "flex-row");
+  todoElement.appendChild(labelContainer);
+
+  let labelElement = document.createElement("label");
+  labelElement.setAttribute("for", checkboxId);
+  labelElement.id = labelId;
+  labelElement.classList.add("checkbox-label");
+  labelElement.textContent = todo.text;
+  if (todo.isChecked === true) {
+    labelElement.classList.add("checked");
+  }
+  labelContainer.appendChild(labelElement);
+
+  let deleteIconContainer = document.createElement("div");
+  deleteIconContainer.classList.add("delete-icon-container");
+  labelContainer.appendChild(deleteIconContainer);
+
+  let deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon");
+
+  deleteIcon.onclick = function () {
+    onDeleteTodo(todoId);
+  };
+
+  deleteIconContainer.appendChild(deleteIcon);
+}
+
+for (let todo of todoList) {
+  createAndAppendTodo(todo);
+}
+
+
+
+
+
   
