@@ -4884,6 +4884,1522 @@ for (let todo of todoList) {
   createAndAppendTodo(todo);
 }
 
+***cp-13-Chatbot 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/5f59ca6ad3.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-2">
+      <h1 class="text-center chatbot-heading">Meet our Chatbot</h1>
+      <img class="image" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/chatbot-bot-img.png"/>
+      <div id="chatContainer" class="chat-container"></div>
+      <div class="d-flex flex-row justify-content-end">
+        <img class="image" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/chatbot-boy-img.png"/>
+      </div>
+      <div class="d-flex flex-row justify-content-center fixed-bottom">
+        <input class="user-input" id="userInput" />
+        <button class="send-msg-btn" id="sendMsgBtn" onclick="sendMsgToChatbot()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.chatbot-heading {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 30px;
+}
+
+.image {
+  width: 150px;
+}
+
+.chat-container {
+  padding: 10px;
+}
+
+.msg-to-chatbot-container {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.msg-to-chatbot {
+  background-color: #cbd2d9;
+  font-family: "Roboto";
+  font-weight: 900;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.msg-from-chatbot-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.msg-from-chatbot {
+  color: white;
+  background-color: #e57742;
+  font-family: "Roboto";
+  font-weight: 900;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.user-input {
+  background-color: #cbd2d9;
+  font-family: "Roboto";
+  font-weight: 900;
+  height: 52px;
+  border-width: 0;
+  border-radius: 5px;
+  margin: 8px;
+  padding: 15px;
+}
+
+.send-msg-btn {
+  background-color: #cbd2d9;
+  font-family: "Roboto";
+  height: 52px;
+  border-width: 0;
+  border-radius: 10px;
+  margin: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+js:
+let chatbotMsgList = ["Hi", "Hey", "Good Morning", "Good Evening", "How can I help you?", "Thank You"];
+
+let chatContainerEl = document.getElementById("chatContainer");
+let userInputEl = document.getElementById("userInput");
+
+function sendMsgToChatbot() {
+
+  let userMsg = userInputEl.value;
+
+  // Creating and appending the container element div
+  let msgContainerEl = document.createElement("div");
+  msgContainerEl.classList.add("msg-to-chatbot-container");
+  chatContainerEl.appendChild(msgContainerEl);
+
+  // Creating and appending the span element
+  let userMsgEl = document.createElement("span");
+  userMsgEl.textContent = userMsg;
+  userMsgEl.classList.add("msg-to-chatbot");
+  msgContainerEl.appendChild(userMsgEl);
+
+  userInputEl.value = "";
+  getReplyFromChatbot();
+
+}
+
+function getReplyFromChatbot() {
+
+  let noOfChatbotMsgs = chatbotMsgList.length;
+  let chatbotMsg = chatbotMsgList[Math.ceil(Math.random() * noOfChatbotMsgs) - 1];
+
+  // Creating and appending the container element div
+  let msgContainerEl = document.createElement("div");
+  msgContainerEl.classList.add("msg-from-chatbot-container");
+  chatContainerEl.appendChild(msgContainerEl);
+
+  // Creating and appending the span element
+  let chatbotMsgEl = document.createElement("span");
+  chatbotMsgEl.textContent = chatbotMsg;
+  chatbotMsgEl.classList.add("msg-from-chatbot");
+  msgContainerEl.appendChild(chatbotMsgEl);
+
+}
+
+**cp-13-Word Cloud 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container word-cloud-container d-flex flex-column justify-content-between">
+      <div class="row" id="wordsContainer"></div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="error-msg" id="errorMsg"></p>
+          <input id="userInput" type="text" class="user-input" />
+          <button id="addBtn" class="add-btn ml-1" onclick="onAddWordToWordCloud()">
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ 
+ css:
+ @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.word-cloud-container {
+  height: 100vh;
+  padding: 20px;
+}
+
+.user-input {
+  width: 60%;
+}
+
+.add-btn {
+  color: white;
+  background-color: #565b6e;
+  border-width: 0;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.error-msg {
+  color: #f62c3b;
+  font-size: 14px;
+}
+
+js:
+let wordCloud = ["Hello", "hii", "how", "what", "you", "yourself", "name", "victory", "food", "lovely", "beautiful", "written", "where", "who", "awesome"];
+
+let wordsContainerEl = document.getElementById("wordsContainer");
+let userInputEl = document.getElementById("userInput");
+let errorMsgEl = document.getElementById("errorMsg");
+
+let errorMsg = "Please enter a word";
+
+function createAndAddWordToWordCloud(word) {
+
+  let randomFontSize = Math.ceil(Math.random() * 40) + "px";
+  let wordEl = document.createElement("span");
+
+  wordEl.textContent = word;
+  wordEl.style.fontSize = randomFontSize;
+  wordEl.classList.add("m-3");
+
+  wordsContainerEl.appendChild(wordEl);
+
+}
+
+for (let word of wordCloud) {
+  createAndAddWordToWordCloud(word);
+}
+
+function onAddWordToWordCloud() {
+
+  let userEnteredWord = userInputEl.value;
+  if (userEnteredWord !== "") {
+    userInputEl.value = "";
+    errorMsgEl.textContent = "";
+    createAndAddWordToWordCloud(userEnteredWord);
+  }
+  else {
+    errorMsgEl.textContent = errorMsg;
+  }
+
+}
+
+**cp-14-Clear the Counter Timer 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="text-center pt-5">
+      <h1 class="heading text-center">Clear the counter timer</h1>
+      <p class="counter-value" id="counterValue"></p>
+      <button class="btn btn-danger" id="clearBtn">Clear</button>
+    </div>
+  </body>
+</html>
+ 
+
+ css:
+
+ @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.counter-value {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+js:
+let clearBtnEl = document.getElementById("clearBtn");
+let counterValue = document.getElementById("counterValue");
+
+let counter = 0;
+
+let counterTimer = function() {
+  counter = counter + 1;
+  counterValue.textContent = counter;
+};
+
+let intervalId = setInterval(counterTimer, 1000);
+
+clearBtnEl.onclick = function() {
+  clearInterval(intervalId);
+};
+
+**cp-14-Custom Range Counter 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-3">
+      <div class="row">
+        <h1 class="col-12 heading text-center">Custom Range Counter</h1>
+        <div class="col-12 text-center">
+          <input
+            type="text"
+            placeholder="Enter From Value"
+            class="w-50 mt-3 pl-2"
+            id="fromUserInput"
+          />
+          <input
+            type="text"
+            placeholder="Enter To Value"
+            class="w-50 mt-3 pl-2"
+            id="toUserInput"
+          />
+          <br />
+          <button class="btn btn-primary mt-4" id="startBtn" onclick="onClickStart()">
+            Start
+          </button>
+          <p class="counter mt-4" id="counterText"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  color: #3e4c59;
+  font-family: "Bree Serif";
+  font-size: 24px;
+}
+
+.counter {
+  font-size: 32px;
+}
+
+
+js:
+let fromUserInputEl = document.getElementById("fromUserInput");
+let toUserInputEl = document.getElementById("toUserInput");
+let counterTextEl = document.getElementById("counterText");
+
+function displayNumbers(fromCount, toCount) {
+  let currentCount = fromCount;
+  counterTextEl.textContent = currentCount;
+
+  let timerId = setInterval(function () {
+    if (currentCount < toCount) {
+      currentCount += 1;
+      counterTextEl.textContent = currentCount;
+    } else {
+      clearInterval(timerId);
+    }
+  }, 1000);
+}
+
+function onClickStart() {
+  let fromVal = fromUserInputEl.value;
+  let toVal = toUserInputEl.value;
+
+  if (fromVal === "") {
+    alert("Enter the from value");
+  } else if (toVal === "") {
+    alert("Enter the to value");
+  } else {
+    let fromValInteger = parseInt(fromVal);
+    let toValInteger = parseInt(toVal);
+
+    displayNumbers(fromValInteger, toValInteger);
+  }
+}
+
+**cp-14-Peace Timer 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="bg-container d-flex flex-column justify-content-center">
+      <div class="container peace-page-container">
+        <div class="row text-center pt-3">
+          <h1 class="col-12 peace-page-heading">A Moment of Peace</h1>
+          <p class="col-12 peace-page-description">
+            Turn off your phone, put on your headphones and take a moment for
+            yourself.
+          </p>
+          <hr class="col-10" />
+          <h1 class="col-12 heading">
+            How long would you like your moment to be?
+          </h1>
+          <ul class="col-12 buttons-list-container d-flex flex-row justify-content-center">
+            <li><button class="button" id="twentySecondsBtn">20 Seconds</button></li>
+            <li><button class="button" id="thirtySecondsBtn">30 Seconds</button></li>
+            <li><button class="button" id="fortySecondsBtn">40 Seconds</button></li>
+            <li><button class="button" id="oneMinuteBtn">1 Minute</button></li>
+          </ul>
+          <p class="col-12 text-center" id="timerText"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background: linear-gradient(#189ffd, #29f39c);
+  height: 100vh;
+}
+
+.peace-page-container {
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.peace-page-heading {
+  color: #323f4b;
+  font-family: "Roboto";
+  font-size: 32px;
+}
+
+.peace-page-description {
+  color: #616e7c;
+  font-family: "Roboto";
+}
+
+.heading {
+  color: #323f4b;
+  font-family: "Bree Serif";
+  font-size: 28px;
+}
+
+.buttons-list-container {
+  margin-top: 10px;
+  list-style-type: none;
+}
+
+.button {
+  font-family: "Roboto";
+  font-size: 15px;
+  background-color: #05a8f2;
+  color: white;
+  border-width: 0;
+  border-radius: 8px;
+  width: 70px;
+  height: 75px;
+  margin: 5px;
+}
+
+js:
+let twentySecondsBtnEl = document.getElementById("twentySecondsBtn");
+let thirtySecondsBtnEl = document.getElementById("thirtySecondsBtn");
+let fortySecondsBtnEl = document.getElementById("fortySecondsBtn");
+let oneMinuteBtnEl = document.getElementById("oneMinuteBtn");
+let timerTextEl = document.getElementById("timerText");
+
+let secondsLeft = 0;
+let timerCompletedText = "Your moment is complete";
+let timerId;
+
+function clearPreviousTimers() {
+  clearInterval(timerId);
+}
+
+twentySecondsBtnEl.onclick = function() {
+  secondsLeft = 20;
+  clearPreviousTimers();
+  setTimerAndShow();
+};
+thirtySecondsBtnEl.onclick = function() {
+  secondsLeft = 30;
+  clearPreviousTimers();
+  setTimerAndShow();
+};
+fortySecondsBtnEl.onclick = function() {
+  secondsLeft = 40;
+  clearPreviousTimers();
+  setTimerAndShow();
+};
+oneMinuteBtnEl.onclick = function() {
+  secondsLeft = 60;
+  clearPreviousTimers();
+  setTimerAndShow();
+};
+
+function setTimerAndShow() {
+  timerTextEl.textContent = secondsLeft + " seconds left";
+  timerId = setInterval(startTimer, 1000);
+}
+
+function startTimer() {
+  if (secondsLeft > 1) {
+    secondsLeft = secondsLeft - 1;
+    timerTextEl.textContent = secondsLeft + " seconds left";
+  } else {
+    clearPreviousTimers();
+    timerTextEl.textContent = timerCompletedText;
+  }
+}
+
+**cp-15-theme switcher 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="bg-container d-flex flex-column justify-content-center text-center" id="bgContainer">
+      <h1 class="heading" id="heading">Dark or Light</h1>
+      <div class="mt-3">
+        <input type="text" class="user-input pl-2" id="themeUserInput" />
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/change-theme-light-bg.png");
+  height: 100vh;
+  background-size: cover;
+}
+
+.heading {
+  color: #014d40;
+  font-size: 48px;
+  font-family: "Lobster";
+}
+
+.user-input {
+  width: 150px;
+}
+
+js:
+let bgContainerEl = document.getElementById("bgContainer");
+let themeUserInputEl = document.getElementById("themeUserInput");
+let headingEl = document.getElementById("heading");
+
+let lightThemeImgUrl =
+  "url('https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/change-theme-light-bg.png')";
+let darkThemeImgUrl =
+  "url('https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/change-theme-dark-bg.png')";
+
+function changeTheme(event) {
+  if (event.key === "Enter") {
+    let themeUserInputVal = themeUserInputEl.value;
+
+    if (themeUserInputVal === "Light") {
+      bgContainerEl.style.backgroundImage = lightThemeImgUrl;
+      headingEl.style.color = "#014d40";
+    } else if (themeUserInputVal === "Dark") {
+      bgContainerEl.style.backgroundImage = darkThemeImgUrl;
+      headingEl.style.color = "#ffffff";
+    } else {
+      alert("Enter the valid theme");
+    }
+  }
+}
+
+themeUserInputEl.addEventListener("keydown", changeTheme);
+
+**cp-15-Key code practice 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-5">
+      <h1 class="heading mb-3">Enter Keys to display the Key codes</h1>
+      <input type="text" placeholder="Enter the keys" class="pl-1" id="userInput" />
+      <p class="mt-3">KeyCodes: </p>
+      <ul class="key-code-list mt-3" id="keyCodeList"></ul>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Monoton&family=Open+Sans:wght@400;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Work+Sans:wght@400;700&display=swap");
+
+.heading {
+  color: #3e4c59;
+  font-family: "Bree Serif";
+  font-size: 28px;
+}
+
+.key-code-list {
+  list-style-type: none;
+}
+
+js:
+let userInputEl = document.getElementById("userInput");
+let keyCodeListEl = document.getElementById("keyCodeList");
+
+function createAndAppendKeyCode(keyCode) {
+  let listItemEl = document.createElement("li");
+  listItemEl.classList.add("mt-1");
+  listItemEl.textContent = keyCode;
+  keyCodeListEl.appendChild(listItemEl);
+}
+
+function onKeydown(event) {
+  createAndAppendKeyCode(event.keyCode);
+}
+
+userInputEl.addEventListener("keydown", onKeydown);
+
+**cp-15-Bomb Defuser 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="timer-container">
+      <input type="text" class="user-input" id="defuser" />
+      <br />
+      <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/time-bomb-img.png" class="bomb-image"/>
+      <p class="timer-display" id="timer">10</p>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Monoton&family=Open+Sans:wght@400;700&family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Work+Sans:wght@400;700&display=swap");
+
+.timer-container {
+  text-align: center;
+  background-color: #00bafc;
+  height: 100vh;
+  padding: 20px;
+}
+
+.timer-display {
+  color: white;
+  font-size: 50px;
+}
+
+.user-input {
+  text-align: center;
+  border-width: 0px;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.bomb-image {
+  width: 150px;
+  margin-top: 40px;
+}
+
+js:
+let defuserEl = document.getElementById("defuser");
+let timerEl = document.getElementById("timer");
+
+let countdown = 10;
+
+let intervalId = setInterval(function() {
+  countdown = countdown - 1;
+  timerEl.textContent = countdown;
+
+  if (countdown === 0) {
+    timerEl.textContent = "BOOM";
+    clearInterval(intervalId);
+  }
+}, 1000);
+
+defuserEl.addEventListener("keydown", function(event) {
+  let bombDefuserText = defuserEl.value;
+
+  if (event.key === "Enter" && bombDefuserText === "defuse" && countdown !== 0) {
+    timerEl.textContent = "You did it!";
+    clearInterval(intervalId);
+  }
+});
+
+**cp-16-HTTP Get Method Practice Page
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-3 bg-container">
+      <h1 class="heading mb-4">Get method practice</h1>
+      <p class="request-url-text">REQUEST URL: <span class="request-url">https://gorest.co.in/public-api/users</span></p>
+      <button class="mt-3 p-2 button" id="sendGetRequestBtn">Send Get Request</button>
+      <hr/>
+      <div class="p-2 mt-4">
+        <p>Request Status</p>
+        <p class="request-status" id="requestStatus"></p>
+        <p class="d-none" id="loading">Loading....</p>
+      </div>
+      <hr/>
+      <div class="p-2 mt-4">
+        <p>Response Body</p>
+        <p class="http-response" id="httpResponse"></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: linear-gradient(to right, #4188da, #2be3c6);
+}
+
+.heading {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.request-url-text {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.request-url {
+  font-weight: 300;
+}
+
+.button {
+  color: #ffffff;
+  background-color: #0967d2;
+  font-size: 14px;
+  border-width: 0;
+  border-radius: 4px;
+}
+
+.request-status {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.http-response {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+js:
+
+let sendGetRequestBtnEl = document.getElementById("sendGetRequestBtn");
+let loadingEl = document.getElementById("loading");
+let requestStatusEl = document.getElementById("requestStatus");
+let httpResponseEl = document.getElementById("httpResponse");
+
+function sendGetHTTPRequest() {
+  let requestUrl = "https://gorest.co.in/public-api/users";
+  let options = {
+    method: "GET",
+  };
+
+  loadingEl.classList.remove("d-none");
+  requestStatusEl.classList.add("d-none");
+
+  fetch(requestUrl, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      requestStatusEl.classList.remove("d-none");
+      loadingEl.classList.add("d-none");
+
+      let requestStatus = jsonData.code;
+      let httpResponse = JSON.stringify(jsonData);
+      requestStatusEl.textContent = requestStatus;
+      httpResponseEl.textContent = httpResponse;
+    });
+}
+
+sendGetRequestBtnEl.addEventListener("click", sendGetHTTPRequest);
+
+**cp-16-HTTP Post Method Practice Page
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-3 bg-container">
+      <h1 class="heading mb-4">Post method practice</h1>
+      <p class="request-url-text">REQUEST URL: <span class="request-url">https://gorest.co.in/public-api/users</span></p>
+      <textarea placeholder="Enter Request Body" rows="5" class="w-100 p-2 request-body" id="requestBody"></textarea>
+      <button class="mt-3 p-2 button" id="sendPostRequestBtn">Send Post Request</button>
+      <hr/>
+      <div class="p-2 mt-4">
+        <p>Request Status</p>
+        <p class="request-status" id="requestStatus"></p>
+        <p class="d-none" id="loading">Loading....</p>
+      </div>
+      <hr/>
+      <div class="p-2 mt-4">
+        <p>Response Body</p>
+        <p class="http-response" id="httpResponse"></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: linear-gradient(to right, #1cc8ef, #4fa5b2);
+}
+
+.heading {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.request-url-text {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.request-url {
+  font-weight: 300;
+}
+
+.request-body {
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+.button {
+  color: #ffffff;
+  background-color: #0552b5;
+  font-size: 14px;
+  border-width: 0;
+  border-radius: 4px;
+}
+
+.request-status {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.http-response {
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+js:
+let requestBodyEl = document.getElementById("requestBody");
+let sendPostRequestBtnEl = document.getElementById("sendPostRequestBtn");
+let loadingEl = document.getElementById("loading");
+let requestStatusEl = document.getElementById("requestStatus");
+let httpResponseEl = document.getElementById("httpResponse");
+
+function sendPostHTTPRequest() {
+  let requestUrl = "https://gorest.co.in/public-api/users";
+  let requestBody = requestBodyEl.value;
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer 88d52bbcb1d08c8abc4749b31118796c1f44c633b20b9ba4c4bfb18e01d1b3f0",
+    },
+    body: requestBody
+  };
+
+  loadingEl.classList.remove("d-none");
+  requestStatusEl.classList.add("d-none");
+
+  fetch(requestUrl, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      requestStatusEl.classList.remove("d-none");
+      loadingEl.classList.add("d-none");
+
+      let requestStatus = jsonData.code;
+      let httpResponse = JSON.stringify(jsonData);
+      requestStatusEl.textContent = requestStatus;
+      httpResponseEl.textContent = httpResponse;
+    });
+}
+
+sendPostRequestBtnEl.addEventListener("click", sendPostHTTPRequest);
+
+**cp-16-HTTP Put Method Practice Page
+ html:
+
+ <!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-3 bg-container">
+      <h1 class="heading mb-4">Put method practice</h1>
+      <p class="request-url-text">REQUEST URL: <span class="request-url">https://gorest.co.in/public-api/users</span></p>
+      <input placeholder="Enter id" class="w-75 p-1 user-input" id="userInput" />
+      <textarea placeholder="Enter Request Body" rows="5" class="w-100 mt-4 p-2 request-body" id="requestBody"></textarea>
+      <button class="mt-3 p-2 button" id="sendPutRequestBtn">Send Put Request</button>
+      <hr/>
+      <div class="request-status-container p-2 mt-4">
+        <p>Request Status</p>
+        <p class="request-status" id="requestStatus"></p>
+        <p class="d-none" id="loading">Loading....</p>
+      </div>
+      <hr/>
+      <div class="response-body-container p-2 mt-4">
+        <p>Response Body</p>
+        <p class="http-response" id="httpResponse"></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: linear-gradient(to right, #7275bf, #358ac7);
+}
+
+.heading {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.request-url-text {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.request-url {
+  font-weight: 300;
+}
+
+.user-input {
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.request-body {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.button {
+  color: white;
+  background-color: #0967d2;
+  font-size: 14px;
+  border-width: 0;
+  border-radius: 4px;
+}
+
+.request-status-container {
+  color: #ffffff;
+}
+
+.request-status {
+  font-family: "Roboto";
+  font-size: 24px;
+}
+
+.response-body-container {
+  color: #ffffff;
+}
+
+.http-response {
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+js:
+let userInputEl = document.getElementById("userInput");
+let requestBodyEl = document.getElementById("requestBody");
+let sendPutRequestBtnEl = document.getElementById("sendPutRequestBtn");
+let loadingEl = document.getElementById("loading");
+let requestStatusEl = document.getElementById("requestStatus");
+let httpResponseEl = document.getElementById("httpResponse");
+
+function sendPutHTTPRequest() {
+  let userId = userInputEl.value;
+  let requestUrl = "https://gorest.co.in/public-api/users/" + userId;
+  let requestBody = requestBodyEl.value;
+  let options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer 88d52bbcb1d08c8abc4749b31118796c1f44c633b20b9ba4c4bfb18e01d1b3f0",
+    },
+    body: requestBody
+  };
+
+  loadingEl.classList.remove("d-none");
+  requestStatusEl.classList.add("d-none");
+
+  fetch(requestUrl, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      requestStatusEl.classList.remove("d-none");
+      loadingEl.classList.add("d-none");
+
+      let requestStatus = jsonData.code;
+      let httpResponse = JSON.stringify(jsonData);
+      requestStatusEl.textContent = requestStatus;
+      httpResponseEl.textContent = httpResponse;
+    });
+}
+
+sendPutRequestBtnEl.addEventListener("click", sendPutHTTPRequest);
+
+
+**cp-16-HTTP Delete Method Practice Page
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-3 bg-container">
+      <h1 class="heading mb-4">Delete method practice</h1>
+      <p class="request-url-text">REQUEST URL: <span class="request-url">https://gorest.co.in/public-api/users</span></p>
+      <input placeholder="Enter id" class="w-75 user-input p-1" id="userInput" />
+      <br />
+      <button class="mt-3 p-2 button" id="sendDeleteRequestBtn">Send Delete Request</button>
+      <div class="request-status-container p-2 mt-4">
+        <p>Request Status</p>
+        <p class="request-status" id="requestStatus"></p>
+        <p class="d-none" id="loading">Loading....</p>
+      </div>
+      <div class="response-body-container p-2 mt-4">
+        <p>Response Body</p>
+        <p class="http-response" id="httpResponse"></p>
+      </div>
+    </div>
+  </body>
+</html> 
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: linear-gradient(to right, #acb6e5, #86fce8);
+}
+
+.heading {
+  color: #2d3a8c;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.request-url-text {
+  color: #35469c;
+  font-weight: bold;
+}
+
+.request-url {
+  font-weight: 300;
+}
+
+.user-input {
+  color: #35469c;
+  background-color: transparent;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #7b93db;
+}
+
+.button {
+  color: white;
+  background-color: #4055a8;
+  border-width: 0;
+  border-radius: 4px;
+}
+
+.request-status-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.request-status {
+  color: #4055a8;
+  font-family: "Roboto";
+  font-size: 32px;
+}
+
+.response-body-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.http-response {
+  color: #4055a8;
+  font-family: "Roboto";
+  font-size: 14px;
+}
+
+
+js:
+
+let userInputEl = document.getElementById("userInput");
+let sendDeleteRequestBtnEl = document.getElementById("sendDeleteRequestBtn");
+let loadingEl = document.getElementById("loading");
+let requestStatusEl = document.getElementById("requestStatus");
+let httpResponseEl = document.getElementById("httpResponse");
+
+function sendDeleteHTTPRequest() {
+  let userInputVal = userInputEl.value;
+  let requestUrl = "https://gorest.co.in/public-api/users/" + userInputVal;
+  let options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization:
+        "Bearer 88d52bbcb1d08c8abc4749b31118796c1f44c633b20b9ba4c4bfb18e01d1b3f0",
+    }
+  };
+
+  loadingEl.classList.remove("d-none");
+  requestStatusEl.classList.add("d-none");
+
+  fetch(requestUrl, options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      requestStatusEl.classList.remove("d-none");
+      loadingEl.classList.add("d-none");
+
+      let requestStatus = jsonData.code;
+      let httpResponse = JSON.stringify(jsonData);
+      requestStatusEl.textContent = requestStatus;
+      httpResponseEl.textContent = httpResponse;
+    });
+}
+
+sendDeleteRequestBtnEl.addEventListener("click", sendDeleteHTTPRequest);
+
+
+**cp-17-Random Joke Page 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="bg-container p-3 d-flex flex-column justify-content-center text-center">
+      <img src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/random-joke-img.png" class="w-25 ml-auto mr-auto" />
+      <p class="joke-text mt-4" id="jokeText">Click the button below to get a random Joke!</p>
+      <div class="d-none mt-5 mb-5" id="spinner">
+        <div class="d-flex flex-row justify-content-center">
+          <div class="spinner-border" role="status">
+          </div>
+        </div>
+      </div>
+      <button class="joke-button p-1 ml-auto mr-auto mt-3" id="jokeBtn">Joke</button>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: linear-gradient(to right, #49c4ee, #6e87d6);
+  height: 100vh;
+}
+
+.joke-text {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.joke-button {
+  color: #6c8bd8;
+  background-color: #ffffff;
+  font-size: 24px;
+  width: 120px;
+  border-width: 0;
+  border-radius: 4px;
+}
+
+js:
+
+let jokeTextEl = document.getElementById("jokeText");
+let spinnerEl = document.getElementById("spinner");
+let jokeBtnEl = document.getElementById("jokeBtn");
+
+let options = {
+  method: "GET"
+};
+
+function getRandomJoke() {
+  spinnerEl.classList.remove("d-none");
+  jokeTextEl.classList.add("d-none");
+
+  fetch("https://apis.ccbp.in/jokes/random", options)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(jsonData) {
+      let randomJoke = jsonData.value;
+
+      spinnerEl.classList.add("d-none");
+      jokeTextEl.classList.remove("d-none");
+
+      jokeTextEl.textContent = randomJoke;
+    });
+}
+
+jokeBtnEl.addEventListener("click", getRandomJoke);
+
+**cp-18-Countries Search Page 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="row">
+        <h1 class="col-12 heading text-center">Find the Population of a Country</h1>
+        <div class="col-12 text-center mt-3">
+          <input type="search" placeholder="Search for a Country" class="form-control search-input" id="searchInput" />
+        </div>
+        <div class="col-12 d-none mt-5" id="spinner">
+          <div class="d-flex flex-row justify-content-center">
+            <div class="spinner-border" role="status"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row result-countries" id="resultCountries"></div>
+    </div>
+  </body>
+</html>
+
+css:
+
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.heading {
+  color: #3e4c59;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.search-input {
+  height: 50px;
+}
+
+.result-countries {
+  margin-top: 18px;
+}
+
+.country-card {
+  background-color: #ebf2fc;
+  border-radius: 24px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.country-flag {
+  width: 70px;
+  height: 70px;
+}
+
+.country-name {
+  color: #183b56;
+  font-family: "Roboto";
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.country-population {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+js:
+
+let searchInputEl = document.getElementById("searchInput");
+let spinnerEl = document.getElementById("spinner");
+let resultCountriesEl = document.getElementById("resultCountries");
+
+let searchInputVal = "";
+let countriesList = [];
+
+function createAndAppendCountry(country) {
+  // Creating and appending countryEl to the resultCountriesEl
+  let countryEl = document.createElement("div");
+  countryEl.classList.add("country-card", "col-11", "col-md-5", "mr-auto", "ml-auto", "d-flex", "flex-row");
+  resultCountriesEl.appendChild(countryEl);
+
+  // Creating and appending countryFlagEl to the countryEl
+  let countryFlagEl = document.createElement("img");
+  countryFlagEl.src = country.flag;
+  countryFlagEl.classList.add("country-flag", "mt-auto", "mb-auto");
+  countryEl.appendChild(countryFlagEl);
+
+  // Creating and appending countryInfoEl to the countryEl
+  let countryInfoEl = document.createElement("div");
+  countryInfoEl.classList.add("d-flex", "flex-column", "ml-4");
+  countryEl.appendChild(countryInfoEl);
+
+  // Creating and appending countryNameEl to the countryInfoEl
+  let countryNameEl = document.createElement("p");
+  countryNameEl.textContent = country.name;
+  countryNameEl.classList.add("country-name");
+  countryInfoEl.appendChild(countryNameEl);
+
+  // Creating and appending countryPopulationEl to the countryInfoEl
+  let countryPopulationEl = document.createElement("p");
+  countryPopulationEl.textContent = country.population;
+  countryPopulationEl.classList.add("country-population");
+  countryInfoEl.appendChild(countryPopulationEl);
+}
+
+function displaySearchResults() {
+  resultCountriesEl.textContent = "";
+  for (let country of countriesList) {
+    let countryName = country.name;
+    // If the searchInputVal includes in the countryName, creating and appending it to the resultCountriesEl
+    if (countryName.includes(searchInputVal)) {
+      createAndAppendCountry(country);
+    }
+  }
+}
+
+function getCountries() {
+  let url = "https://apis.ccbp.in/countries-data";
+  let options = {
+    method: "GET",
+  };
+
+  spinnerEl.classList.remove("d-none");
+  //Making an HTTP request (GET method) using fetch
+  fetch(url, options)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (jsonData) {
+      spinnerEl.classList.add("d-none");
+      countriesList = jsonData;
+      displaySearchResults();
+    });
+}
+
+function onChangeSearchInput(event) {
+  searchInputVal = event.target.value;
+   displaySearchResults();
+} 
+
+getCountries();
+searchInputEl.addEventListener("keyup", onChangeSearchInput);
+
+**cp-18-Know Fact About the Number 
+html:
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="p-2 bg-container d-flex flex-column justify-content-center text-center">
+      <h1 class="heading">Enter a number to know interesting facts about the number</h1>
+      <input type="search" class="form-control user-input ml-auto mr-auto mt-4" placeholder="Enter a Number" id="userInput" />
+      <div class="d-none spinner" id="spinner">
+        <div class="d-flex flex-row justify-content-center mt-4">
+          <div class="spinner-border" role="status"></div>
+        </div>
+      </div>
+      <p class="fact-text mt-4" id="fact">0 is the atomic number of the theoretical element tetraneutron.</p>
+    </div>
+  </body>
+</html>
+
+css:
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+.bg-container {
+  background-image: url("https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/numbers-fact-bg.png");
+  background-size: cover;
+  height: 100vh;
+}
+
+.heading {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.user-input {
+  width: 320px;
+}
+
+.spinner {
+  color: #ffffff;
+}
+
+.fact-text {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+js:
+let userInputEl = document.getElementById("userInput");
+let spinnerEl = document.getElementById("spinner");
+let factEl = document.getElementById("fact");
+
+function getFactOfEnteredNumber(event) {
+  if (event.key === "Enter") {
+    let userInputVal = userInputEl.value;
+
+    if (userInputVal === "") {
+      alert("Enter a Number");
+      return;
+    }
+
+    let url = "https://apis.ccbp.in/numbers-fact?number=" + userInputVal;
+    let options = {
+      method: "GET"
+    };
+
+    spinnerEl.classList.remove("d-none");
+    factEl.classList.add("d-none");
+
+    fetch(url, options)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(jsonData) {
+        factEl.classList.remove("d-none");
+        spinnerEl.classList.add("d-none");
+
+        let { fact } = jsonData;
+        factEl.textContent = fact;
+      });
+  }
+}
+
+userInputEl.addEventListener("keyup", getFactOfEnteredNumber);
+
+
 
 
 
